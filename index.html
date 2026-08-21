@@ -1,7 +1,8 @@
 <meta charset="utf-8">
 <title>Emmanuel Eyiyemi Coker — Product &amp; Project Manager</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Emmanuel Eyiyemi Coker — Product &amp; Project Manager in Lagos, Nigeria. Fintech, commerce and platform products.">
+<!-- Profile photo is stored in the repo as IMG_0025.JPEG and referenced with a relative path. -->
+  <meta name="description" content="Emmanuel Eyiyemi Coker — Product &amp; Project Manager in Lagos, Nigeria. Fintech, commerce and platform products.">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Emmanuel Eyiyemi Coker — Product &amp; Project Manager">
 <meta property="og:description" content="Software engineer by training, product manager by practice. Fintech, commerce and platform products.">
@@ -174,6 +175,34 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
   padding:9px 12px; margin:0 var(--pad) 11mm;
 }
 
+
+/* ---------- profile photo ---------- */
+.masthead-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18mm;
+}
+.masthead-copy{min-width:0; flex:1}
+.profile-photo{
+  width:42mm;
+  height:42mm;
+  flex:0 0 42mm;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.72);
+  box-shadow:0 10px 30px rgba(0,0,0,.28);
+  display:block;
+}
+@media (max-width:760px){
+  .masthead-inner{flex-direction:column-reverse; align-items:flex-start; gap:14px}
+  .profile-photo{width:88px; height:88px; flex-basis:88px}
+}
+@media print{
+  .profile-photo{width:34mm; height:34mm; flex-basis:34mm}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:760px){
   :root{--pad:22px}
@@ -218,15 +247,24 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
 <div class="sheet">
 
   <header class="masthead">
-    <p class="eyebrow">Product &amp; Project Management · Lagos, Nigeria</p>
-    <h1>Emmanuel Eyiyemi Coker</h1>
-    <p class="role-line">Software engineer by training, <b>product manager by practice</b> — fintech, commerce and platform products.</p>
-    <div class="chips">
-      <span class="chip">+234 915 744 3579</span>
-      <a class="chip" href="mailto:cokeremmanuel23@gmail.com">cokeremmanuel23@gmail.com</a>
-      <a class="chip" href="https://linkedin.com/in/yemi-coker-b81440221">linkedin.com/in/yemi-coker-b81440221</a>
-      <span class="chip">Lagos, NG · open to remote</span>
-      <a class="chip dl no-print" href="#" id="dl">↓ Download PDF</a>
+    <div class="masthead-inner">
+      <div class="masthead-copy">
+        <p class="eyebrow">Product &amp; Project Management · Lagos, Nigeria</p>
+        <h1>Emmanuel Eyiyemi Coker</h1>
+        <p class="role-line">Software engineer by training, <b>product manager by practice</b> — fintech, commerce and platform products.</p>
+        <div class="chips">
+          <span class="chip">+234 915 744 3579</span>
+          <a class="chip" href="mailto:cokeremmanuel23@gmail.com">cokeremmanuel23@gmail.com</a>
+          <a class="chip" href="https://linkedin.com/in/yemi-coker-b81440221">linkedin.com/in/yemi-coker-b81440221</a>
+          <span class="chip">Lagos, NG · open to remote</span>
+          <a class="chip dl no-print" href="#" id="dl">↓ Download PDF</a>
+        </div>
+      </div>
+      <img
+        class="profile-photo"
+        src="IMG_0025.JPEG"
+        alt="Emmanuel Eyiyemi Coker"
+      >
     </div>
   </header>
 
