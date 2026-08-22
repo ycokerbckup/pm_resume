@@ -146,7 +146,7 @@ th{
   padding:0 10px 6px 0; border-bottom:1px solid var(--line);
 }
 td{padding:7px 10px 7px 0; border-bottom:1px solid var(--line); vertical-align:top}
-@media print{td{padding:5px 10px 5px 0}}
+@media print{td{padding:4px 10px 4px 0}}
 tr:last-child td{border-bottom:0}
 td.k{font-weight:600; width:21%; white-space:nowrap}
 .caps td:nth-child(2){width:51%}
@@ -201,7 +201,7 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
   .profile-photo{width:88px; height:88px; flex-basis:88px}
 }
 @media print{
-  .profile-photo{width:34mm; height:34mm; flex-basis:34mm}
+  .profile-photo{width:30mm; height:30mm; flex-basis:30mm}
 }
 
 /* ---------- responsive ---------- */
@@ -224,10 +224,10 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
   body{background:#fff; font-size:8.7pt; line-height:1.44}
   .sheet{margin:0; max-width:none; box-shadow:none}
   *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
-  .masthead{padding:11mm var(--pad) 9mm}
-  .band{padding:4.5mm var(--pad)}
-  .role{padding:7px 0 9px}
-  li{margin-bottom:3px}
+  .masthead{padding:9mm var(--pad) 8mm}
+  .band{padding:3mm var(--pad)}
+  .role{padding:6px 0 8px}
+  li{margin-bottom:2.5px}
   .proj{margin-bottom:8px}
   h1{font-size:25pt}
   .role-line{font-size:11.5pt; margin-bottom:12px}
@@ -381,9 +381,14 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
       </thead>
       <tbody>
         <tr>
+          <td class="k">Strategy</td>
+          <td>Opportunity sizing, competitive analysis, business cases, OKRs</td>
+          <td class="mono">Confluence · Rovo</td>
+        </tr>
+        <tr>
           <td class="k">Product</td>
           <td>Roadmaps, PRDs, backlog, acceptance criteria, KPI tracking</td>
-          <td class="mono">Jira · Confluence · Rovo</td>
+          <td class="mono">Jira · Confluence</td>
         </tr>
         <tr>
           <td class="k">Delivery</td>
@@ -392,13 +397,18 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
         </tr>
         <tr>
           <td class="k">Discovery &amp; design</td>
-          <td>User research, A/B testing, journey mapping, prototyping</td>
+          <td>User research, journey mapping, wireframing, prototyping</td>
           <td class="mono">Figma</td>
         </tr>
         <tr>
+          <td class="k">Data &amp; testing</td>
+          <td>A/B testing, funnel and cohort analysis, instrumentation</td>
+          <td class="mono">SQL · Python</td>
+        </tr>
+        <tr>
           <td class="k">Technical</td>
-          <td>Reading the stack, querying product data, scoping feasibility</td>
-          <td class="mono">SQL · Python · React · JS</td>
+          <td>Reading the stack, scoping feasibility, API design</td>
+          <td class="mono">React · JS · REST APIs</td>
         </tr>
         <tr>
           <td class="k">Domain</td>
@@ -422,7 +432,7 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
           </tbody>
         </table>
         <ul style="margin-top:9px">
-          <li>Google Developer Student Club (GDSC) — Product and Data Science sub-units; Solutions Developer, Babcock Student Association; class Project Manager and Designer.</li>
+          <li>Google Developer Student Club — Product &amp; Data Science; Solutions Developer, Babcock Student Association.</li>
         </ul>
 
         <h2 style="margin-top:6mm">Languages</h2>
@@ -442,22 +452,22 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
       </div>
     </div>
 
-    <h2 style="margin-top:5mm">Selected projects</h2>
+    <h2 style="margin-top:2mm">Selected projects</h2>
     <div class="three">
       <div class="proj">
         <p class="meta">2025 – Present · Founder</p>
         <h3>GigFlo</h3>
-        <p>Product strategy, roadmap and execution for a service-delivery platform.</p>
+        <p>Product strategy and roadmap for a service-delivery platform.</p>
       </div>
       <div class="proj">
-        <p class="meta">Concept · Trading</p>
-        <h3>Stockify</h3>
-        <p>Workflows and onboarding that make trading legible to first-time retail users.</p>
+        <p class="meta">Solivest · Fintech</p>
+        <h3>Fractional Investing</h3>
+        <p>Onboarding, portfolio and payout flows for first-time investors.</p>
       </div>
       <div class="proj">
         <p class="meta">Babcock University</p>
-        <h3>Research Evaluation System</h3>
-        <p>Feature redesign that lifted engagement 20% across students and faculty.</p>
+        <h3>Research Evaluation</h3>
+        <p>Feature redesign; engagement up 20% across students and faculty.</p>
       </div>
       </div>
   </section>
@@ -480,36 +490,18 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
   if (b) b.textContent = label;
 })();
 
+/*
+ * The PDF is generated from the current page at the moment the user clicks
+ * "Download / Save as PDF" — there is no static PDF in the repo, so any change
+ * to the HTML/CSS is reflected automatically. In the print dialog, choose
+ * "Save as PDF", and make sure "Background graphics" is enabled.
+ */
 (function () {
   var link = document.getElementById('dl');
   if (!link) return;
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    var b64 = document.getElementById('pdf-data').textContent.trim();
-    var bin = atob(b64);
-    var bytes = new Uint8Array(bin.length);
-    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-    var url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = 'Emmanuel-Coker-Resume.pdf';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-  });
-})();
-</script>
-<script>
-  /*
-   * PDF is generated from the current page at the moment the user clicks
-   * "Download PDF". There is no static PDF embedded in the repo.
-   *
-   * Any changes made to the HTML/CSS are therefore reflected in the PDF.
-   * In the browser print dialog, choose "Save as PDF".
-   */
-  document.getElementById('dl')?.addEventListener('click', function (event) {
+  link.addEventListener('click', function (event) {
     event.preventDefault();
     window.print();
   });
+})();
 </script>
