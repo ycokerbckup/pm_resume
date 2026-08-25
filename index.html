@@ -259,7 +259,7 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
           <a class="chip" href="https://linkedin.com/in/yemi-coker-b81440221">linkedin.com/in/yemi-coker-b81440221</a>
           <span class="chip">Lagos, NG · open to remote</span>
           <span class="chip"><span id="experience-chip">4+</span> years experience</span>
-          <a class="chip dl no-print" href="#" id="dl">↓ Download / Save as PDF</a>
+          <a class="chip dl no-print" href="#" id="dl" onclick="window.print(); return false;">↓ Download / Save as PDF</a>
         </div>
       </div>
       <img
@@ -477,6 +477,13 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
 
 <script>
 
+/*
+ * The PDF is generated from the page itself when "Download / Save as PDF" is
+ * clicked — the button uses an inline onclick, so it keeps working even if this
+ * script fails. In the print dialog choose "Save as PDF" and make sure
+ * "Background graphics" is switched on.
+ */
+try {
 (function () {
   var start = new Date(2022, 0, 1); // January 2022
   var now = new Date();
@@ -489,19 +496,6 @@ td.yr{font-family:var(--mono); font-size:8.6pt; color:var(--muted); width:16%; t
   if (a) a.textContent = label;
   if (b) b.textContent = label;
 })();
+} catch (e) { /* year label is cosmetic; never let it break the page */ }
 
-/*
- * The PDF is generated from the current page at the moment the user clicks
- * "Download / Save as PDF" — there is no static PDF in the repo, so any change
- * to the HTML/CSS is reflected automatically. In the print dialog, choose
- * "Save as PDF", and make sure "Background graphics" is enabled.
- */
-(function () {
-  var link = document.getElementById('dl');
-  if (!link) return;
-  link.addEventListener('click', function (event) {
-    event.preventDefault();
-    window.print();
-  });
-})();
 </script>
